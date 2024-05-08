@@ -1,12 +1,13 @@
 import { useParams } from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
+import Comments from './Comments'
 
 function Article({articles}){
 
     const [article, setArticle] = useState([])
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState('')
+    const [error, setError] = useState(false)
 
 
     const {article_id} = useParams()
@@ -31,6 +32,7 @@ function Article({articles}){
     }
 
     return (
+        <>
         <div className="articleHome">
         <h1>{article.title}</h1>
         <h2>Written by {article.author} on {article.created_at}</h2>
@@ -39,6 +41,8 @@ function Article({articles}){
         <p>{article.body}</p>
         <h4>votes: {article.votes} | comments: {article.comment_count}</h4>
         </div>
+        <Comments article_id={article_id}/>
+        </>
     )
 }
 
