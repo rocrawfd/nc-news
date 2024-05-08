@@ -8,5 +8,11 @@
 .articleHome {
   border: solid black;
   background: rgb(174, 4, 4);
-  color: black;
+  color: white;
+  }
+  
+.header {
+  border: solid black;
+  background: rgb(174, 4, 4);
+  color: white;
   }

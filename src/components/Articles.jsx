@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Articles({articles, setArticles}){
 
@@ -15,6 +16,7 @@ function Articles({articles, setArticles}){
             setArticles(response.data.articles)
         })
         .catch((err) => {
+          console.log(err)
           setError(true)
         })
     }, [] )
@@ -32,8 +34,9 @@ function Articles({articles, setArticles}){
           return (
         <li key={article.article_id} className = 'articleHome'>
           <h2>{article.title}</h2>
-          <p>{article.author}</p>
+          <p>{article.author} | {article.created_at}</p>
           <img src= {article.article_img_url}/>
+          <Link to={`/articles/${article.article_id}`} >Read Article</Link>
         </li>
           )
         })}
