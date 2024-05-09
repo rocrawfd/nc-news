@@ -18,3 +18,10 @@ export function postComment(article_id, username, body){
         return data.comment
     })
 }
+
+export function deleteComment(comment_id){
+    return ncNewsApi.delete(`/comments/${comment_id}`)
+    .then((response) => {
+        return response.status
+    })
+}

@@ -24,7 +24,7 @@ function Articles({articles, setArticles}){
       return <p>Error</p>
     }
     if(loading){
-      return <p>Loading Articles...</p>
+      return <h2>Loading Articles...</h2>
     }
 
     return (
