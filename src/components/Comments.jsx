@@ -1,19 +1,35 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import AddComment from './AddComment'
+import DeleteComment from './DeleteComment'
 
-function Comments(article_id){
+function Comments(article_id, setCommentCount){
 
 const [comments, setComments] = useState([])
-//article 34 has 10 comments visible but a comment count of 11
+const [user, setUser] = useState("cooljmessy");
+const [loading, setLoading] = useState(true)
+const [error, setError] = useState(false)
+
+// article 34 has 10 comments visible but a comment count of 11
 const articleId = article_id.article_id
     useEffect(() => {
     axios.get(`https://northcoders-news-app-ei5k.onrender.com/api/articles/${articleId}/comments`)
     .then(({data}) => {
+        setLoading(false)
         setComments(data.comments)
+    })
+    .catch((err) => {
+        setError(true)
     })
 }, [])
 
+
+if(loading){
+    return <h1>loading...</h1>
+}
+if(error){
+    return <h2>error loading comments...</h2>
+}  
 
     return (
         <>
@@ -21,13 +37,24 @@ const articleId = article_id.article_id
         <AddComment comments={comments} setComments={setComments}/>
         <ul>
             {comments.map((comment) => {
-                return(
-                    <li key={comment.comment_id} className="articleHome">
-                        <p>{comment.body}</p>
-                        <p>{comment.author} | Posted: {comment.created_at}</p>
-                        <p>Votes: {comment.votes}</p>
-                    </li>
-                )
+                if(user === comment.author){
+                    return(
+                        <li key={comment.comment_id} className="articleHome">
+                            <p>{comment.body}</p>
+                            <p>{comment.author} | Posted: {comment.created_at}</p>
+                            <p>Votes: {comment.votes}</p>
+                            <DeleteComment id={comment.comment_id} comments={comments} setComments={setComments} />
+                        </li>
+                    )
+                }else{
+                    return(
+                        <li key={comment.comment_id} className="articleHome">
+                            <p>{comment.body}</p>
+                            <p>{comment.author} | Posted: {comment.created_at}</p>
+                            <p>Votes: {comment.votes}</p>
+                        </li>
+                    )
+                }
             })}
         </ul>
         </>

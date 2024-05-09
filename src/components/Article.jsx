@@ -10,6 +10,7 @@ function Article(){
     const [votes, setVotes] = useState(0)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
+    const [commentCount, setCommentCount] = useState()
 
     let count = 0
 
@@ -22,6 +23,7 @@ function Article(){
             setError(false)
             setArticle(article)
             setVotes(article.votes)
+            setCommentCount(article.comment_count)
             count = article.votes
         })
         .catch((err) => {
@@ -58,7 +60,7 @@ function Article(){
         <h3>Topic: {article.topic}</h3>
         <img src={article.article_img_url}/>
         <p>{article.body}</p>
-        <h4>votes: {votes} | comments: {article.comment_count}</h4>
+        <h4>votes: {votes} | comments: {commentCount}</h4>
         <button onClick={handleUpvote} >Vote for Article</button>
         <button onClick={handleDownvote} >Dislike</button>
         </div>
