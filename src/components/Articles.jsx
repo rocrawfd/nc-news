@@ -16,7 +16,6 @@ function Articles({articles, setArticles}){
             setArticles(response.data.articles)
         })
         .catch((err) => {
-          console.log(err)
           setError(true)
         })
     }, [] )

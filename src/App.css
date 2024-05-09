@@ -16,3 +16,7 @@
   background: rgb(174, 4, 4);
   color: white;
   }
+
+  ul{
+    list-style-type: none;
+  }

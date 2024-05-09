@@ -22,7 +22,7 @@ function App() {
           </div>
         }/>
         <Route path="/articles/:article_id" element={
-          <Article articles={articles}/>
+          <Article />
         }/>
       </Routes>
     </div>

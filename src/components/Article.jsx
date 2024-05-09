@@ -2,34 +2,53 @@ import { useParams } from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import Comments from './Comments'
+import { upvoteArticle } from '../../../utils/utils'
 
-function Article({articles}){
+function Article(){
 
     const [article, setArticle] = useState([])
+    const [votes, setVotes] = useState(0)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
 
+    let count = 0
 
     const {article_id} = useParams()
     useEffect(()=>{
         axios.get(`https://northcoders-news-app-ei5k.onrender.com/api/articles/${article_id}`)
         .then(({data}) => {
+            const article = data.article
             setLoading(false)
             setError(false)
-            const article = data.article
             setArticle(article)
+            setVotes(article.votes)
+            count = article.votes
         })
         .catch((err) => {
             setError(true)
         })
     }, [])
 
+
     if(loading){
         return <h1>loading...</h1>
     }
     if(error){
         return <h1>error loading article...</h1>
+    }  
+
+
+    function handleUpvote(event){
+        event.preventDefault()
+        setVotes(votes => votes + 1)
+        upvoteArticle(article_id, 1)
     }
+    function handleDownvote(event){
+        event.preventDefault()
+        setVotes(votes => votes - 1)
+        upvoteArticle(article_id, -1)
+    }
+
 
     return (
         <>
@@ -39,7 +58,9 @@ function Article({articles}){
         <h3>Topic: {article.topic}</h3>
         <img src={article.article_img_url}/>
         <p>{article.body}</p>
-        <h4>votes: {article.votes} | comments: {article.comment_count}</h4>
+        <h4>votes: {votes} | comments: {article.comment_count}</h4>
+        <button onClick={handleUpvote} >Vote for Article</button>
+        <button onClick={handleDownvote} >Dislike</button>
         </div>
         <Comments article_id={article_id}/>
         </>
