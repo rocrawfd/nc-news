@@ -10,7 +10,6 @@ const articleId = article_id.article_id
     axios.get(`https://northcoders-news-app-ei5k.onrender.com/api/articles/${articleId}/comments`)
     .then(({data}) => {
         setComments(data.comments)
-        console.dir(data.comments)
     })
 }, [])
 
