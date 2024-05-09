@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import Comments from './Comments'
-import { upvoteArticle } from '../../../utils/utils'
+import { upvoteArticle } from '../../utils/utils'
 
 function Article(){
 
