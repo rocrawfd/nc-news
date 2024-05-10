@@ -13,7 +13,7 @@ function Articles({articles, setArticles}){
         .then((response) => {
           setError(false)
           setLoading(false)
-            setArticles(response.data.articles)
+          setArticles(response.data.articles)
         })
         .catch((err) => {
           setError(true)
