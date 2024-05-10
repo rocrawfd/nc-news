@@ -14,7 +14,7 @@ function App() {
     <>
     <div className="HomeArticles">
     <Header />
-    <Searchbar />
+    <Searchbar setArticles={setArticles} />
       <Routes>
         <Route path = "/" element={
           <div>
