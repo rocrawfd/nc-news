@@ -34,7 +34,7 @@ function Searchbar({setArticles}) {
             <option key="all-articles" value="all articles">all articles</option>
             {topics.map((topic) => {
                 return (
-                    <option key={topic.slug} value = {topic.slug}>{topic.slug}</option>
+                    <option key={topic.slug} value={topic.slug}> {topic.slug} </option>
                 )
             })}
         </select>
