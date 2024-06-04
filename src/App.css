@@ -28,3 +28,16 @@
   .not-hidden{
     color: red;
   }
+
+  .flatlist{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .topicList{
+    padding: 20;
+    border-width: 20;
+    padding: 0.6em 1.2em;
+    padding-top: 0
+  }

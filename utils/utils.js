@@ -4,6 +4,12 @@ const ncNewsApi = axios.create({
     baseURL: "https://northcoders-news-app-ei5k.onrender.com/api"
 })
 
+export function getAllArticles(paramsObj){
+    return ncNewsApi.get('/articles', {
+        params: paramsObj
+    })
+}
+
 
 export function upvoteArticle(article_id, vote){
     return ncNewsApi.patch(`/articles/${article_id}`, { inc_votes: vote })
@@ -24,4 +30,8 @@ export function deleteComment(comment_id){
     .then((response) => {
         return response.status
     })
+}
+
+export function getTopics(){
+    return ncNewsApi.get('/topics')
 }

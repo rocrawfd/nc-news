@@ -4,17 +4,14 @@ import {Routes, Route} from "react-router-dom"
 import Header from './components/Header'
 import Articles from './components/Articles'
 import Article from './components/Article'
-import Searchbar from './components/Searchbar'
 
 
 function App() {
   const [articles, setArticles] = useState([])
 
   return (
-    <>
     <div className="HomeArticles">
     <Header />
-    <Searchbar setArticles={setArticles} />
       <Routes>
         <Route path = "/" element={
           <div>
@@ -26,7 +23,6 @@ function App() {
         }/>
       </Routes>
     </div>
-    </>
   )
 }
 
