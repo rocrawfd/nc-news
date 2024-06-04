@@ -1,15 +1,21 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { getAllArticles } from '../../utils/utils'
+import { useSearchParams } from 'react-router-dom'
+import Searchbar from './Searchbar'
+import SortBy from './SortBy'
+
 
 function Articles({articles, setArticles}){
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [searchParams, setSearchParams] = useSearchParams()
+
 
     useEffect(() => {
-        axios
-        .get('https://northcoders-news-app-ei5k.onrender.com/api/articles')
+      getAllArticles(searchParams)
         .then((response) => {
           setError(false)
           setLoading(false)
@@ -18,7 +24,7 @@ function Articles({articles, setArticles}){
         .catch((err) => {
           setError(true)
         })
-    }, [] )
+    }, [searchParams] )
 
     if(error){
       return <p>Error</p>
@@ -28,6 +34,9 @@ function Articles({articles, setArticles}){
     }
 
     return (
+      <div>
+      <Searchbar/>
+      <SortBy/>
       <ul>
         {articles.map((article) => {
           return (
@@ -41,6 +50,7 @@ function Articles({articles, setArticles}){
         })}
         
       </ul>
+      </div>
     )
       
     }
