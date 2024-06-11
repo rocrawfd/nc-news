@@ -10,7 +10,6 @@ const [user, setUser] = useState("cooljmessy");
 const [loading, setLoading] = useState(true)
 const [error, setError] = useState(false)
 
-// article 34 has 10 comments visible but a comment count of 11
 const articleId = article_id.article_id
     useEffect(() => {
     axios.get(`https://northcoders-news-app-ei5k.onrender.com/api/articles/${articleId}/comments`)

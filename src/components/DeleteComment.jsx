@@ -1,5 +1,6 @@
 import { deleteComment } from "../../utils/utils";
 import { useState } from "react";
+import Popup from "reactjs-popup";
 
 function DeleteComment({ id, comments, setComments }) {
 
@@ -17,7 +18,12 @@ function DeleteComment({ id, comments, setComments }) {
 
   return (
     <div>
-      <button onClick={handleClick}>Delete Comment</button>
+      <Popup className='popup' trigger={<button>Delete Comment</button>} position={'right center'}>
+        <div className='flatlist'>
+          <p>Are you sure?</p>
+          <button onClick={handleClick}>Yes</button>
+        </div>
+      </Popup>
     </div>
   );
 }

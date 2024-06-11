@@ -23,7 +23,7 @@ function AddComment({comments, setComments}){
 
     return (
         <form onSubmit={handleSubmit}>
-            <label for="typeComment">Type Comment:</label>
+            <label htmlFor="typeComment">Type Comment:</label>
             <input type="text" name="typeComment" id="typeComment" placeholder="type comment here..."/>
             <p className={className}>comment cannot be blank</p>
         <button>Add Comment</button>

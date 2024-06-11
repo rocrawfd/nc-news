@@ -4,6 +4,7 @@ import {Routes, Route} from "react-router-dom"
 import Header from './components/Header'
 import Articles from './components/Articles'
 import Article from './components/Article'
+import Error from './components/Error'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/articles/:article_id" element={
           <Article />
         }/>
+        <Route path="*" element={<Error/>}/>
       </Routes>
     </div>
   )
