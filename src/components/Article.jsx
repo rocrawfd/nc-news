@@ -11,6 +11,7 @@ function Article(){
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
     const [commentCount, setCommentCount] = useState()
+    const [errorMsg, setErrorMsg] = useState('Unknown Error')
 
     let count = 0
 
@@ -27,16 +28,18 @@ function Article(){
             count = article.votes
         })
         .catch((err) => {
+            setErrorMsg(err.response.data.msg)
             setError(true)
+            setLoading(false)
         })
     }, [])
 
 
     if(loading){
-        return <h1>loading...</h1>
+        return <h2>loading...</h2>
     }
     if(error){
-        return <h1>error loading article...</h1>
+        return <h2>error loading article: {errorMsg}</h2>
     }  
 
 

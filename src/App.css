@@ -41,3 +41,11 @@
     padding: 0.6em 1.2em;
     padding-top: 0
   }
+
+  .popup { 
+    background-color: #fafafa;
+} 
+
+.horizontal{
+  align-items: flex-end;
+}

@@ -3,9 +3,9 @@ import {useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getTopics } from '../../utils/utils'
 
-function Searchbar() {
+function Searchbar({searchparams, setSearchParams}) {
     const [topics, setTopics] = useState([])
-    const [topic, setTopic] = useState()
+    
 
     useEffect(() => {
         getTopics()

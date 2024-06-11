@@ -10,7 +10,6 @@ export function getAllArticles(paramsObj){
     })
 }
 
-
 export function upvoteArticle(article_id, vote){
     return ncNewsApi.patch(`/articles/${article_id}`, { inc_votes: vote })
     .then(({data}) => {
