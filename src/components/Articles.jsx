@@ -47,7 +47,7 @@ function Articles({ articles, setArticles }) {
       <ul>
         {articles.map((article) => {
           return (
-            <Link to={`/articles/${article.article_id}`}>
+            <Link className='articleCard' to={`/articles/${article.article_id}`}>
               <li key={article.article_id} className="articleHome">
                 <h2>{article.title}</h2>
                 <p>

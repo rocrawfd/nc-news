@@ -51,5 +51,11 @@
 }
 
 .links{
-  padding: 0.6em 1.2em;
+  padding: 1.5rem;
+}
+
+.articleCard{
+  display: flex;
+  padding: 1em;
+  justify-content: center;
 }
